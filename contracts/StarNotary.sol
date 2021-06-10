@@ -83,4 +83,18 @@ contract StarNotary is ERC721 {
         //2. Use the transferFrom(from, to, tokenId); function to transfer the Star
     }
 
+    /**
+     * Accessor for token name
+     */
+    function name() public view virtual override returns (string memory) {
+        return "Notarium";
+    }
+
+    /**
+     * Accessor for token symbol
+     */
+    function symbol() public view virtual override returns (string memory) {
+        return "STRNT";
+    }
+
 }
