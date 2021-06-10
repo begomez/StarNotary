@@ -75,9 +75,30 @@ contract StarNotary is ERC721 {
     // Implement Task 1 Exchange Stars function
     function exchangeStars(uint256 _tokenId1, uint256 _tokenId2) public {
         //1. Passing to star tokenId you will need to check if the owner of _tokenId1 or _tokenId2 is the sender
+
+        bool senderOwnsTokenId1 = false;
+
+        address ownerStar1 = ownerOf(_tokenId1);
+        address ownerStar2 = ownerOf(_tokenId2);
+
+        Star memory star1 = tokenIdToStarInfo[_tokenId1];
+        Star memory star2 = tokenIdToStarInfo[_tokenId2];
+
+        if (msg.sender == ownerStar1) {
+            senderOwnsTokenId1 = true;
+        }
+
         //2. You don't have to check for the price of the token (star)
+        uint price1 = starsForSale[_tokenId1];
+        uint price2 = starsForSale[_tokenId2];
+
         //3. Get the owner of the two tokens (ownerOf(_tokenId1), ownerOf(_tokenId1)
         //4. Use _transferFrom function to exchange the tokens.
+        transferFrom(ownerStar1, ownerStar2, _tokenId1);
+        emit Transfer(ownerStar1, ownerStar2, _tokenId1);
+
+        transferFrom(ownerStar2, ownerStar1, _tokenId2);
+        emit Transfer(ownerStar2, ownerStar1, _tokenId2);
     }
 
     // Implement Task 1 Transfer Stars
