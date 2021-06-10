@@ -1,3 +1,5 @@
+const { assert, memory } = require("console");
+
 const StarNotary = artifacts.require("StarNotary");
 
 var accounts;
@@ -82,24 +84,63 @@ it('lets user2 buy a star and decreases its balance in ether', async() => {
 // Implement Task 2 Add supporting unit tests
 
 it('can add the star name and star symbol properly', async() => {
+    let starName = "Red Dwarf";
+    let starId = 42;
     // 1. create a Star with different tokenId
+    await instance.createStar(starName, starId, {from: msg.sender});
     //2. Call the name and symbol properties in your Smart Contract and compare with the name and symbol provided
+    let nameActual = await instance.name.call();
+
+    let symbolActual = await instance.symbol.call();
+
+    assert.equal(nameActual, starName);
+    assert.equal(symbolActual, "NTR")
 });
 
 it('lets 2 users exchange stars', async() => {
+    let user1 = msg.sender;
+    let user2 = accounts[1];
+
     // 1. create 2 Stars with different tokenId
+    let starNameExpected1 = "Cepheus";
+    let tokenId1 = 42;
+    let starNameExpected2 = "Cassiopeia";
+    let tokenId2 = 43;
+    await instance.createStar(starNameExpected1, tokenId1, {from: user1, gasPrice: 0});
+    await instance.createStar(starNameExpected2, tokenId2, {from: user2, gasPrice: 0});
+
     // 2. Call the exchangeStars functions implemented in the Smart Contract
+    await instance.exchangeStars(tokenId1, tokenId2);
+
     // 3. Verify that the owners changed
+    assert.equal(ownerOf(tokenId1, user2));
+    assert.equal(ownerOf(tokenId2, user1));
 });
 
 it('lets a user transfer a star', async() => {
+    let starNameExpected = "Pegasus";
+    let tokenId = 42; 
+    let receiver = accounts[1];
+
     // 1. create a Star with different tokenId
+    await instance.createStar(starNameExpected, tokenId, {from: msg.sender, gasPrice: 0});
+
     // 2. use the transferStar function implemented in the Smart Contract
+    await instance.transferStar(receiver, tokenId, {from: msg.sender, gasPrice: 0});
+
     // 3. Verify the star owner changed.
+    assert.equals(receiver, await instance.ownerOf(tokenId));
 });
 
 it('lookUptokenIdToStarInfo test', async() => {
     // 1. create a Star with different tokenId
+    let starNameExpected = "Centaurus";
+    let tokenId = 42;
+    await instance.createStar(starNameExpected, tokenId, {from: msg.sender, gasPrice: 0});
+
     // 2. Call your method lookUptokenIdToStarInfo
+    let starNameActual = await instance.lookUptokenIdToStarInfo[tokenId];
+
     // 3. Verify if you Star name is the same
+    assert.equal(starNameExpected, starNameActual);
 });
