@@ -124,7 +124,7 @@ contract StarNotary is ERC721 {
      * Accessor for token symbol
      */
     function symbol() public view virtual override returns (string memory) {
-        return "STRNT";
+        return "NTR";
     }
 
 }
