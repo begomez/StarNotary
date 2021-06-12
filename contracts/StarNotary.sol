@@ -11,10 +11,8 @@ contract StarNotary is ERC721 {
         string name;
     }
 
-    constructor(
-        string  memory name, 
-        string memory symbol,
-        uint256 initialSupply)  public ERC721 (name, symbol) {
+    constructor (
+        uint256 initialSupply)  public ERC721 (name(), symbol()) {
         require(initialSupply > 0, "Must provide initial tokens");
         
         _mint(msg.sender, initialSupply);
