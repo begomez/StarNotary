@@ -1,3 +1,17 @@
+1) About smart contract implemented:
+Token name   -> Notarium
+Token symbol -> NTR
+
+2) About tools and SW:
+Bernats-iMac:PR2_StarNotary bernatgomez$ node -v
+v12.6.0
+
+Bernats-iMac:PR2_StarNotary bernatgomez$ truffle -v
+Truffle v5.3.8 - a development framework for Ethereum
+
+"_id": "openzeppelin-solidity@4.1.0",
+
+
 # ND1309 C2 Ethereum Smart Contracts, Tokens and Dapps - Project Starter 
 **PROJECT: Decentralized Star Notary Service Project** - For this project, you will create a DApp by adding functionality with your smart contract and deploy it on the public testnet.
 
