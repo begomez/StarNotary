@@ -1,4 +1,4 @@
-pragma solidity 0.8.4;
+pragma solidity 0.8.5;
 
 //Importing openzeppelin-solidity ERC-721 implemented Standard
 import "../app/node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
@@ -48,6 +48,7 @@ contract StarNotary is ERC721 {
 
     // Function that allows you to convert an address into a payable address
     function _make_payable(address x) internal pure returns (address payable) {
+        //return payable(address(uint160(x)));
         return payable(x);
     }
 
