@@ -12,19 +12,13 @@ contract StarNotary is ERC721 {
     }
 
     constructor(
-        string memory name, 
+        string  memory name, 
         string memory symbol,
         uint256 initialSupply)  public ERC721 (name, symbol) {
         require(initialSupply > 0, "Must provide initial tokens");
         
         _mint(msg.sender, initialSupply);
-    }
-
-
-    // Implement Task 1 Add a name and symbol properties
-    // name: Is a short name to your token
-    // symbol: Is a short string like 'USD' -> 'American Dollar'
-    
+    }   
 
     // mapping the Star with the Owner Address
     mapping(uint256 => Star) public tokenIdToStarInfo;
@@ -45,13 +39,13 @@ contract StarNotary is ERC721 {
         starsForSale[_tokenId] = _price;
     }
 
-
     // Function that allows you to convert an address into a payable address
     function _make_payable(address x) internal pure returns (address payable) {
         //return payable(address(uint160(x)));
         return payable(x);
     }
 
+    // Function that allows caller to get a token
     function buyStar(uint256 _tokenId) public  payable {
         require(starsForSale[_tokenId] > 0, "The Star should be up for sale");
         uint256 starCost = starsForSale[_tokenId];
@@ -89,7 +83,7 @@ contract StarNotary is ERC721 {
             senderOwnsTokenId1 = true;
         }
 
-        //2. You don't have to check for the price of the token (star)
+        //2. You don't have to check for the price of the token (star)... but do it anyway
         uint price1 = starsForSale[_tokenId1];
         uint price2 = starsForSale[_tokenId2];
 
@@ -114,6 +108,10 @@ contract StarNotary is ERC721 {
         emit Transfer(from, to, _tokenId);
     }
 
+    // Implement Task 1 Add a name and symbol properties
+    // name: Is a short name to your token
+    // symbol: Is a short string like 'USD' -> 'American Dollar'
+ 
     /**
      * Accessor for token name
      */
