@@ -21,9 +21,8 @@ Token symbol -> NTR
 
 
 3) About deployment on rinkeby:
-0x41D01F33775bD8Bc66B08E5b7878c01f085CD3B9
-https://rinkeby.etherscan.io/address/0x41D01F33775bD8Bc66B08E5b7878c01f085CD3B9
-
+0x9EC7869127CdDBbe080bE16214E86d344f476C95
+https://rinkeby.etherscan.io/address/0x9EC7869127CdDBbe080bE16214E86d344f476C95
 
 # ND1309 C2 Ethereum Smart Contracts, Tokens and Dapps - Project Starter 
 **PROJECT: Decentralized Star Notary Service Project** - For this project, you will create a DApp by adding functionality with your smart contract and deploy it on the public testnet.
