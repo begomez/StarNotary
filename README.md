@@ -1,15 +1,24 @@
 1) About smart contract implemented:
+
 Token name   -> Notarium
 Token symbol -> NTR
 
 2) About tools and SW:
-Bernats-iMac:PR2_StarNotary bernatgomez$ node -v
-v12.6.0
 
-Bernats-iMac:PR2_StarNotary bernatgomez$ truffle -v
-Truffle v5.3.8 - a development framework for Ethereum
+  NODE
+  Bernats-iMac:PR2_StarNotary bernatgomez$ node -v
+  v12.6.0
 
-"_id": "openzeppelin-solidity@4.1.0",
+  TRUFFLE
+  Bernats-iMac:PR2_StarNotary bernatgomez$ truffle -v
+  Truffle v5.3.8 - a development framework for Ethereum
+
+  OPENZEPPELIN
+  "_id": "openzeppelin-solidity@4.1.0",
+
+  SOLIDITY
+  version: "0.8.5",    // Fetch exact version from solc-bin (default: truffle's version)
+
 
 3) About deployment on rinkeby:
 0x41D01F33775bD8Bc66B08E5b7878c01f085CD3B9
